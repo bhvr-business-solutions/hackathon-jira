@@ -24,6 +24,9 @@ class Forest extends Component {
                 <div className="imageFifth-third-tree-structure"></div>
                 <div className="imageSix-fourth-tree-structure"></div>
                 <div className="imageSeven-fifth-tree-structure"></div>
+                <div className="imageEight-tree-head"></div>
+                <div className="imageNine-light-first"></div>
+                <div className="imageTen-light-second"></div>
             </div>
         );
     }
