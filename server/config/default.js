@@ -24,6 +24,11 @@ module.exports = {
       name: "ekime",
       avatar: "soldier_walk.gif",
       jiraId: "557058:e5edff59-b028-4e44-aaaf-6d5dd62bd466"
+    },
+    {
+      name: "foo",
+      avatar: "soldier_walk.gif",
+      jiraId: "5a81b4f4cd68e7211cf87aaf"
     }
   ]
 };
