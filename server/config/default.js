@@ -16,12 +16,12 @@ module.exports = {
   users: [
     {
       name: "wondert",
-      avatar: "avatar1.png",
+      avatar: "barbarian_1_walk.gif",
       jiraId: "5c350d9005d0812fde06dd22"
     },
     {
       name: "ekime",
-      avatar: "avatar2.png",
+      avatar: "soldier_walk.gif",
       jiraId: "557058:e5edff59-b028-4e44-aaaf-6d5dd62bd466"
     }
   ]

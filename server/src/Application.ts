@@ -1,6 +1,7 @@
 import * as bodyParser from 'body-parser';
 import * as config from 'config';
 import * as express from 'express';
+import * as path from 'path';
 import { Server } from 'http';
 import { Ranking } from './dtos/Ranking';
 import { Issue, IssueStatus } from './entities/Issue';
@@ -55,9 +56,21 @@ export class Application {
       next();
     });
 
+    this.app.get('/avatar/:name', (req, res, next) => {
+      const fileName = req.params.name;
+      const options = {
+        root: path.resolve(__dirname, '..', 'avatars'),
+        headers: {
+    
+        }
+      }
+      res.sendFile(fileName, options);
+    });
+
     this.app.all('*', (req, res, next) => {
       res.status(200).json({status: 'ok'});
     });
+    
   }
 
   private initWebSocket(): void {
