@@ -1,3 +1,9 @@
+import * as config from 'config';
+import { JiraClient } from './jira/api/JiraClient';
+
+const jira = new JiraClient(config.get<any>('jira'));
+jira.getProjectIssues().then(issues => console.log(JSON.stringify(issues, null, 2))).catch(e => console.error(e));
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
