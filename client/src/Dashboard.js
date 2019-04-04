@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './Dashboard.css';
 
+let config = require('./config.json');
+
 class Dashboard extends Component {
     render() {
         return (
             <div>
-                beep boop
+                { config.welcomeText }
             </div>
         );
     }
