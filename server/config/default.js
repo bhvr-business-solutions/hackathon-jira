@@ -5,8 +5,8 @@ module.exports = {
   jira: {
     domain: 'behaviour',
     defaultProjectKey: 'HJ',
-    userName: null,
-    password: null
+    userName: 'remy.jeancolas@bhvr.com',
+    password: 'sag4Dorfki2fYPloVffiE6DB'
   },
   displayLimit: 5,
   defaultUser: {
