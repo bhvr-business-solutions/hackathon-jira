@@ -46,6 +46,10 @@ export class Application {
   private initExpressApp(): void {
     this.app = express();
     this.app.use(bodyParser.json());
+    this.app.use((req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      next();
+    });
 
     this.app.get('/', (req, res, next) => {
       res.status(200).json(this.computeScores());
