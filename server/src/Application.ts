@@ -97,7 +97,8 @@ export class Application {
       totalScores: 0,
       completedIssues: 0,
       completedScores: 0,
-      topUsers: []
+      topUsers: [],
+      teamName: config.get<string>('teamName')
     };
     for(const i of issues) {
       const score = calcScore(i);

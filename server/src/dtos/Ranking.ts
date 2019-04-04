@@ -6,4 +6,5 @@ export interface Ranking {
   completedIssues: number;
   completedScores: number;
   topUsers?: User[];
+  teamName?: string;
 }

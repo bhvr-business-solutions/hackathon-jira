@@ -9,6 +9,7 @@ module.exports = {
     password: 'sag4Dorfki2fYPloVffiE6DB'
   },
   displayLimit: 5,
+  teamName: "Awesome Team",
   defaultUser: {
     name: "missingNo",
     avatar: "avatar3.png"
