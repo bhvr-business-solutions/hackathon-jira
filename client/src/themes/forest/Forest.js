@@ -17,16 +17,16 @@ class Forest extends Component {
     render() {
         return (
             <div class="forest-container">
-                <div className="imageFirst"></div>
-                <div className="imageSecond-green-bush"></div>
-                <div className="imageThird-first-tree-structure"></div>
-                <div className="imageFourth-second-tree-structure"></div>
-                <div className="imageFifth-third-tree-structure"></div>
-                <div className="imageSix-fourth-tree-structure"></div>
-                <div className="imageSeven-fifth-tree-structure"></div>
-                <div className="imageEight-tree-head"></div>
-                <div className="imageNine-light-first"></div>
-                <div className="imageTen-light-second"></div>
+                <div className="forest imageFirst"></div>
+                <div className="forest imageSecond-green-bush"></div>
+                <div className="forest imageThird-first-tree-structure"></div>
+                <div className="forest imageFourth-second-tree-structure"></div>
+                <div className="forest imageFifth-third-tree-structure"></div>
+                <div className="forest imageSix-fourth-tree-structure"></div>
+                <div className="forest imageSeven-fifth-tree-structure"></div>
+                <div className="forest imageEight-tree-head"></div>
+                <div className="forest imageNine-light-first"></div>
+                <div className="forest imageTen-light-second"></div>
             </div>
         );
     }
