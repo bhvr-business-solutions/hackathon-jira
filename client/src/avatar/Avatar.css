@@ -1,0 +1,11 @@
+.avatar-list{
+    position: absolute;
+    z-index: 100;
+    bottom: 49px;
+    display: flex;
+}
+
+
+.avatarImage{
+    width: 300px
+}
