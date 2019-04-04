@@ -1,18 +1,125 @@
-/* .forest-container {
+.forest-container {
+    position: absolute;
+    overflow: hidden;
     width: 100%;
     height: 100%;
+}
 
-    background-color: red;
-} */
 
-@-webkit-keyframes scroll {
+
+@keyframes slide {
+  0%{
+    transform: scale(2) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(2) translate3d(-1856px, 0, 0);
+  }
+}
+
+.layer0 {
+    position: absolute;
+    transform: scale(2);
+    animation: slide 110s linear infinite;
+    margin-top: 150px;
+    width: 5568px;
+    height: 100%;
+    z-index: 10;
+    background-image: url('./images/Layer_0000_9.png');
+    background-repeat: repeat-x;
+    background-position: 0;
+}
+
+.layer1 {
+    position: absolute;
+    transform: scale(2);
+    animation: slide 120s linear infinite;
+    margin-top: 120px;
+    width: 5568px;
+    height: 100%;
+    z-index: 9;
+    background-image: url('./images/Layer_0001_8.png');
+    background-repeat: repeat-x;
+    background-position: 0;
+}
+
+.layer2 {
+    position: absolute;
+    transform: scale(2);
+    animation: slide 130s linear infinite;
+    margin-top: -160px;
+    width: 5568px;
+    height: 100%;
+    z-index: 8;
+    background-image: url('./images/Layer_0002_7.png');
+    background-repeat: repeat-x;
+    background-position: 0;
+}
+
+.layer3 {
+    position: absolute;
+    transform: scale(2);
+    animation: slide 140s linear infinite;
+    width: 5568px;
+    height: 100%;
+    z-index: 7;
+    background-image: url('./images/Layer_0003_6.png');
+    background-repeat: repeat-x;
+    background-position: 0;
+}
+
+.layer5 {
+    position: absolute;
+    transform: scale(2);
+    animation: slide 160s linear infinite;
+    width: 5568px;
+    height: 100%;
+    z-index: 5;
+    background-image: url('./images/Layer_0005_5.png');
+    background-repeat: repeat-x;
+    background-position: 0;
+}
+
+.layer6 {
+    position: absolute;
+    transform: scale(2);
+    animation: slide 180s linear infinite;
+    height: 100%;
+    width: 5568px;
+    z-index: 4;
+    background-image: url('./images/Layer_0006_4.png');
+    background-repeat: repeat-x;
+    background-position: 0;
+}
+
+.layer8 {
+    position: absolute;
+    transform: scale(2);
+    animation: slide 200s linear infinite;
+    height: 100%;
+    width: 5568px;
+    z-index: 2;
+    background-image: url('./images/Layer_0008_3.png');
+    background-repeat: repeat-x;
+    background-position: 0;
+}
+
+.layer9 {
+    position: absolute;
+    transform: scale(2);
+    height: 100%;
+    width: 5568px;
+    z-index: 1;
+    background-image: url('./images/Layer_0009_2.png');
+    background-repeat: repeat-x;
+    background-position: 0;
+}
+
+
+/* @-webkit-keyframes scroll {
     from {
         left: 0px;
     }
 
-    /* 50% {
-      left: -320px;
-    } */
     to {
         left: -540px;
     }
@@ -27,7 +134,7 @@
 }
 
 .imageFirst {
-    /* -webkit-animation: scroll 10s infinite linear; */
+    -webkit-animation: scroll 10s infinite linear;
     bottom: 0;
     z-index: 100;
     height: 200px;
@@ -121,4 +228,4 @@
     z-index: 10;
     background-size: 36%;
 
-}
+} */
