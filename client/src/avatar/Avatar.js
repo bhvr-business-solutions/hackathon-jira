@@ -3,36 +3,21 @@ import './Avatar.css';
 
 class Avatar extends Component {
 
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-            avatarIcon: [],
-          };
-      }
-    
-      componentDidMount() {
-        fetch('http://localhost:8081/')
-          .then(response => response.json())
-          .then(data => this.setState({ avatarIcon: data }));
-      }
+    getUsers(){
+        return this.props.users.sort((a, b) => a.score - b.score).map(function(x){
+            return <div key={x.id}>
+            <img className="avatarImage" src={`http://localhost:8081/avatar/${x.avatar}`} alt="gif" />            
+            <span className="avatarName">{x.name}</span>
+            </div>;
+        })
+
+    }
 
     render() {
+        console.log(this.props.users[0].avatar)
         return (
             <div className="avatar-list">
-                <div>
-                    <img className="avatarImage" src={require('./avatarImages/barbarian_1_run.gif')} alt="gif" />
-                </div>                   
-                <div>
-                    <img className="avatarImage" src={require('./avatarImages/barbarian_1_run.gif')} alt="gif" />
-                </div>                   
-                <div>
-                    <img className="avatarImage" src={require('./avatarImages/barbarian_1_run.gif')} alt="gif" />
-                </div>                   
-                <div>
-                    <img className="avatarImage" src={require('./avatarImages/barbarian_1_run.gif')} alt="gif" />
-                </div>         
-    
+                {this.getUsers()}
             </div>
         );
     }

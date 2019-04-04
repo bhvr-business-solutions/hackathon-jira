@@ -6,22 +6,41 @@ import './App.css';
 import Dashboard from './Dashboard';
 
 class AppComponent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      ready: false
+    };
+  }
+
   componentDidMount() {
-    this.props.getData();
+    this.props.getData().then(() => {
+      this.setState({
+        ready: true
+      });
+    });
   }
 
   render() {
-    console.log(this.props);
-    return (
-      <div class="app-container">
-        <Dashboard />
-      </div>
-    );
+    if (!this.state.ready) {
+      return <div>Loading app...</div>;
+    }
+    else{
+      
+      return (
+        <div class="app-container">
+          <Dashboard application={this.props.application}/>
+        </div>
+      );
+
+    }
+
   }
 }
 
 function mapStateToProps({application}) {
-  return {...application};
+  return {application};
 }
 
 function mapDispatchToProps(dispatch) {

@@ -16,15 +16,15 @@ import './Forest.css';
 class Forest extends Component {
     render() {
         return (
-            <div class="forest-container">
-                <div class="layer0"></div>
-                <div class="layer1"></div>
-                <div class="layer2"></div>
-                <div class="layer3"></div>
-                <div class="layer5"></div>
-                <div class="layer6"></div>
-                <div class="layer8"></div>
-                <div class="layer9"></div>
+            <div className="forest-container">
+                <div className="layer0"></div>
+                <div className="layer1"></div>
+                <div className="layer2"></div>
+                <div className="layer3"></div>
+                <div className="layer5"></div>
+                <div className="layer6"></div>
+                <div className="layer8"></div>
+                <div className="layer9"></div>
             </div>
         );
     }

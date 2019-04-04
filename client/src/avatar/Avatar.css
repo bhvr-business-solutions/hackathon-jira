@@ -1,11 +1,22 @@
+@font-face {
+    font-family: 'PixelArt';
+    src: url(../assets/fonts/PixelArt/PixelArt.woff) format('woff');
+  }
+
 .avatar-list{
     position: absolute;
     z-index: 100;
-    bottom: 49px;
+    bottom: 16%;
     display: flex;
 }
 
 
 .avatarImage{
     width: 300px
+}
+.avatarName{
+    font-family: 'PixelArt';
+    color: white;
+    margin-left: -184px;
+    font-size: 19px;
 }
