@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import ThunkMiddleware from 'redux-thunk';
-// import { Request as RequestMiddleware } from './middlewares/Request';
+import { WebSocketMiddleware } from './middlewares/WebSocket';
 import { Root as rootReducer } from './reducers/Root';
 
 export class Store {
@@ -17,7 +17,7 @@ export class Store {
         rootReducer,
         composeEnhancers(
           applyMiddleware(ThunkMiddleware),
-          // applyMiddleware(RequestMiddleware)
+          applyMiddleware(WebSocketMiddleware)
         )
       );
     }

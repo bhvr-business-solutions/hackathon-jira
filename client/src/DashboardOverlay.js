@@ -5,8 +5,14 @@ import emblemImage from './assets/images/emblem.png';
 
 class DashboardOverlay extends Component {
     render() {
+        let width = '0%';
+
+        if (this.props.totalIssues && this.props.totalIssues !== 0) {
+            width = `${this.props.completedIssues / this.props.totalIssues * 100}%`;
+        }
+
         const progressBarStyle = {
-            width: '32%',
+            width,
         };
 
         return (
@@ -27,7 +33,7 @@ class DashboardOverlay extends Component {
                                 </div>
                             </div>
                             <div class="dashboard-overlay-team-progress-text">
-                                8 / 25 COMPLETED
+                                {typeof this.props.completedIssues === 'number' ? this.props.completedIssues : '?'} / {typeof this.props.totalIssues ? this.props.totalIssues : '?'} COMPLETED
                             </div>
                         </div>
                     </div>

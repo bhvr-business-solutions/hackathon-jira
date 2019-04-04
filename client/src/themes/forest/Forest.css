@@ -17,7 +17,7 @@
 .layer0 {
     position: absolute;
     transform: scale(2);
-    animation: slide 200s linear infinite;
+    animation: slide 250s linear infinite;
     margin-top: 150px;
     width: 5568px;
     height: 100%;
@@ -30,7 +30,7 @@
 .layer1 {
     position: absolute;
     transform: scale(2);
-    animation: slide 160s linear infinite;
+    animation: slide 275s linear infinite;
     margin-top: 120px;
     width: 5568px;
     height: 100%;
@@ -43,7 +43,7 @@
 .layer2 {
     position: absolute;
     transform: scale(2);
-    animation: slide 170s linear infinite;
+    animation: slide 275s linear infinite;
     margin-top: -160px;
     width: 5568px;
     height: 100%;
@@ -56,7 +56,7 @@
 .layer3 {
     position: absolute;
     transform: scale(2);
-    animation: slide 185s linear infinite;
+    animation: slide 325s linear infinite;
     width: 5568px;
     height: 100%;
     z-index: 7;
@@ -68,7 +68,7 @@
 .layer5 {
     position: absolute;
     transform: scale(2);
-    animation: slide 200s linear infinite;
+    animation: slide 375s linear infinite;
     width: 5568px;
     height: 100%;
     z-index: 5;
@@ -80,7 +80,7 @@
 .layer6 {
     position: absolute;
     transform: scale(2);
-    animation: slide 215s linear infinite;
+    animation: slide 400s linear infinite;
     height: 100%;
     width: 5568px;
     z-index: 4;
@@ -92,7 +92,7 @@
 .layer8 {
     position: absolute;
     transform: scale(2);
-    animation: slide 230s linear infinite;
+    animation: slide 450s linear infinite;
     height: 100%;
     width: 5568px;
     z-index: 2;
