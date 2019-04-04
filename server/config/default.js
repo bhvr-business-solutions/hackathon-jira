@@ -1,4 +1,7 @@
 module.exports = {
+  server: {
+    port: process.env.SERVER_PORT ? +process.env.SERVER_PORT : 8081
+  },
   jira: {
     domain: 'behaviour',
     defaultProjectKey: 'HJ',

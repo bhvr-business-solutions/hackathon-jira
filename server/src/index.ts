@@ -47,8 +47,9 @@ jira.getProjectIssues().then((issues) => {
   for (const i of issues) {
     store.save(i);
   }
-  app.listen(8081, () => {
-    console.log('Server listening on port 8081');
+  const port = config.get<number>('server.port');
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
   });
 }).catch((e) => {
   console.error(e)
