@@ -4,6 +4,9 @@ import * as express from 'express';
 import { EventProcessor, EventType } from './jira/events/EventProcessor';
 import { JiraClient } from './jira/api/JiraClient';
 import { IssueStore } from './store/IssueStore';
+import { User } from './entities/User';
+import { Issue, IssueStatus } from './entities/Issue';
+import { Ranking } from './dtos/Ranking';
 
 // Main store
 const store = new IssueStore();
@@ -12,13 +15,50 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get('/', (req, res, next) => {
-  console.log(req.query);
-  // var users = new Store().getInstance().load("users");
-  // var result = users.slice(0, config.get<number>('displayLimit'))
-  const result = store.getAll();
+  
+  //formula to calculate score
+  const calcScore = (issue: Issue): number => {
+    return 10000 / issue.priority;
+  };
+
+  const issues = store.getAll();
+  console.log(issues);
+  let result: Ranking = {
+    totalIssues: 0,
+    totalScores: 0,
+    completedIssues: 0,
+    CompletedScores: 0,
+    topUsers: []
+  };
+  for(const i of issues) {
+    const score = calcScore(i);
+    if (i.user) {
+      const user = result.topUsers.find(x => x.id === i.user.id);
+      if (!user) {
+        const configInfo = config.get<any>('users').find(x => x.jiraId === i.user.id);
+        result.topUsers.push({
+          id: i.user.id,
+          name: configInfo ? configInfo.name : config.get<any>('defaultUser').name,
+          avatar: configInfo ? configInfo.avatar : config.get<any>('defaultUser').avatar,
+          score: i.status === IssueStatus.Done ?  score : 0
+        })
+      }
+      else {
+        user.score += score;
+      }
+    }
+    result.totalIssues++;
+    result.totalScores += score;
+    if (i.status === IssueStatus.Done) {
+      result.completedIssues++;
+      result.CompletedScores += score;
+    }
+  }
+  result.topUsers = result.topUsers.splice(0, config.get<number>('displayLimit'))
   console.log(req.body);
   res.status(200).json(result);
 });
+
 
 ///////////////////////// Jira stuff /////////////////////////////
 const eventProcessor = new EventProcessor(config.get<string>('jira.defaultProjectKey'));

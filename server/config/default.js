@@ -22,7 +22,7 @@ module.exports = {
     {
       name: "ekime",
       avatar: "avatar2.png",
-      jiraId: "5a5fc351a9eb266e7c57b41a"
+      jiraId: "557058:e5edff59-b028-4e44-aaaf-6d5dd62bd466"
     }
   ]
 };
