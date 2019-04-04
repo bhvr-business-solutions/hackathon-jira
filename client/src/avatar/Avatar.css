@@ -6,17 +6,23 @@
 .avatar-list{
     position: absolute;
     z-index: 100;
-    bottom: 16%;
+    top: 58%;
     display: flex;
 }
 
+.avatar-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 
 .avatarImage{
     width: 300px
 }
+
 .avatarName{
     font-family: 'PixelArt';
     color: white;
-    margin-left: -184px;
     font-size: 19px;
+    margin-top: -60px;
 }

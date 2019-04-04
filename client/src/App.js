@@ -33,9 +33,7 @@ class AppComponent extends Component {
           <Dashboard application={this.props.application}/>
         </div>
       );
-
     }
-
   }
 }
 
