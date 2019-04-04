@@ -4,6 +4,6 @@ export interface Ranking {
   totalIssues: number;
   totalScores: number;
   completedIssues: number;
-  CompletedScores: number;
+  completedScores: number;
   topUsers?: User[];
 }

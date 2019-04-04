@@ -29,7 +29,7 @@ app.get('/', (req, res, next) => {
     totalIssues: 0,
     totalScores: 0,
     completedIssues: 0,
-    CompletedScores: 0,
+    completedScores: 0,
     topUsers: []
   };
   for(const i of issues) {
@@ -53,12 +53,11 @@ app.get('/', (req, res, next) => {
     result.totalScores += score;
     if (i.status === IssueStatus.Done) {
       result.completedIssues++;
-      result.CompletedScores += score;
+      result.completedScores += score;
     }
   }
   //return only the top users
   result.topUsers = result.topUsers.sort((a, b) => b.score - a.score).splice(0, config.get<number>('displayLimit'))
-  console.log(req.body);
   res.status(200).json(result);
 });
 
