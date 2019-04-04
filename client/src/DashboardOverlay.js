@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './DashboardOverlay.scss';
+import './DashboardOverlay.css';
 
 import emblemImage from './assets/images/emblem.png';
 
