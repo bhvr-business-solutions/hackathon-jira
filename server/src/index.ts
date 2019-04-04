@@ -1,17 +1,19 @@
 import * as bodyParser from 'body-parser';
 import * as config from 'config';
 import * as express from 'express';
-import { EventProcessor, EventType } from './jira/events/EventProcessor';
-import { JiraClient } from './jira/api/JiraClient';
-import { IssueStore } from './store/IssueStore';
-import { User } from './entities/User';
-import { Issue, IssueStatus } from './entities/Issue';
+import { Server } from 'http';
 import { Ranking } from './dtos/Ranking';
+import { Issue, IssueStatus } from './entities/Issue';
+import { WebSocket } from './helpers/WebSocket';
+import { JiraClient } from './jira/api/JiraClient';
+import { EventProcessor, EventType } from './jira/events/EventProcessor';
+import { IssueStore } from './store/IssueStore';
 
 // Main store
 const store = new IssueStore();
 
 const app = express();
+const server = new Server(app);
 app.use(bodyParser.json());
 
 app.get('/', (req, res, next) => {
@@ -60,6 +62,12 @@ app.get('/', (req, res, next) => {
   res.status(200).json(result);
 });
 
+//////////////////////// Web socket stuff ////////////////////////
+const webSocket = new WebSocket(server);
+webSocket.server.on('connection', (socket) => {
+  webSocket.handleNewConnection(socket);
+});
+////////////////////// End Web socket stuff //////////////////////
 
 ///////////////////////// Jira stuff /////////////////////////////
 const eventProcessor = new EventProcessor(config.get<string>('jira.defaultProjectKey'));
@@ -89,7 +97,7 @@ jira.getProjectIssues().then((issues) => {
     store.save(i);
   }
   const port = config.get<number>('server.port');
-  app.listen(port, () => {
+  server.listen(port, () => {
     console.log(`Server listening on port ${port}`);
   });
 }).catch((e) => {
