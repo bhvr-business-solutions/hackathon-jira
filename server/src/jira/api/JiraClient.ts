@@ -1,6 +1,7 @@
 import * as request from 'request';
 import { Validator } from '../../helpers/Validator';
 import { Issue } from '../Issue';
+import { Issue as AppIssue } from '../../entities/Issue';
 import { validate } from 'node-typechecker';
 
 interface JiraClientConfig {
@@ -62,9 +63,9 @@ export class JiraClient {
     });
   }
 
-  public async getProjectIssues(projectKey?: string): Promise<Issue[]> {
+  public async getProjectIssues(projectKey?: string): Promise<AppIssue[]> {
     const key = Validator.isNonEmptyString(projectKey) ? projectKey.trim() : this.projectKey;
-    const result = await this.sendRequest(`search?jql=project=${key}&validateQuery=true&fields=priority,status,assignee,creator,summary,issuetype`)
-    return validate(result.body.issues, Array, Issue);
+    const result = await this.sendRequest(`search?jql=project=${key}&validateQuery=true&fields=priority,status,assignee,issuetype,summary,resolution&maxResults=100`)
+    return validate(result.body.issues, Array, Issue).map(i => i.toEntity());
   }
 }

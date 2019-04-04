@@ -1,12 +1,12 @@
+import * as bodyParser from 'body-parser';
 import * as config from 'config';
-import { JiraClient } from './jira/api/JiraClient';
-import { Store } from './store/store'
+import * as express from 'express';
+import { EventProcessor } from './jira/events/EventProcessor';
+import { Store } from './store/store';
 
-const jira = new JiraClient(config.get<any>('jira'));
-jira.getProjectIssues().then(issues => console.log(JSON.stringify(issues, null, 2))).catch(e => console.error(e));
+// const jira = new JiraClient(config.get<any>('jira'));
+// jira.getProjectIssues().then(issues => console.log(JSON.stringify(issues, null, 2))).catch(e => console.error(e));
 
-const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
@@ -18,13 +18,29 @@ app.get('/', (req, res, next) => {
   res.status(200).json(result);
 });
 
-app.post('/', (req, res, next) => {
-  console.log("query:" + JSON.stringify(req.query));
-  new Store().getInstance().save("users", req.body);
-
-  console.log("body:" + JSON.stringify(req.body));
-  res.status(200).json({status: "OK"});
+const eventProcessor = new EventProcessor(config.get<string>('jira.defaultProjectKey'));
+// eventProcessor.on(EventType.IssueUpdated, (issue) => {
+//   console.log('Updated', issue);
+// });
+// eventProcessor.on(EventType.IssueDeleted, (issue) => {
+//   console.log('Deleted', issue);
+// });
+app.post('/jira/event', (req, res, next) => {
+  eventProcessor.processWebHook(req.body);
+  next();
 });
+
+app.all('*', (req, res, next) => {
+  res.status(200).json({status: 'ok'});
+});
+
+// app.post('/', (req, res, next) => {
+//   console.log("query:" + JSON.stringify(req.query));
+//   new Store().getInstance().save("users", req.body);
+
+//   console.log("body:" + JSON.stringify(req.body));
+//   res.status(200).json({status: "OK"});
+// });
 
 
 
