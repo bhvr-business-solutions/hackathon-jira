@@ -7,7 +7,7 @@ class Avatar extends Component {
         return this.props.users.sort((a, b) => a.score - b.score).map(function(x){
             return <div key={x.id}>
             <img className="avatarImage" src={`http://localhost:8081/avatar/${x.avatar}`} alt="gif" />            
-            <span className="avatarName">{x.name}</span>
+            <span className="avatarName">{x.name} : {x.score} </span>
             </div>;
         })
 
