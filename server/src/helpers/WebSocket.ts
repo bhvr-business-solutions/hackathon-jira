@@ -12,7 +12,7 @@ export class WebSocket {
     this.server.attach(app);
   }
 
-  private sendEventToClients(event: string, data: any): void {
+  public emitEvent(event: string, data: any): void {
     this.server.to(this.eventsRoom).emit(event, data);
   }
 
