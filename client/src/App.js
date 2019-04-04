@@ -11,10 +11,9 @@ class AppComponent extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div class="app-container">
-        <Dashboard />
+        <Dashboard appState={this.props} />
       </div>
     );
   }
