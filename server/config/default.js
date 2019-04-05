@@ -36,9 +36,14 @@ module.exports = {
       jiraId: "557058:d2ccf86c-db2e-453d-8ad0-d9ef6facd83f"
     },
     {
-      name: "Groot",
+      name: "groot",
       avatar: "goblin_2_walk.gif",
       jiraId: "557058:5795d3dc-e7f4-4045-a717-fec981187530"
+    },
+    {
+      name: "not etienne",
+      avatar: "gargoyle_fly.gif",
+      jiraId: "5a007bb59ec0fc1b0de9bb48"
     }
   ]
 };
