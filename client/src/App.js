@@ -29,7 +29,7 @@ class AppComponent extends Component {
     else{
       
       return (
-        <div class="app-container">
+        <div className="app-container">
           <Dashboard application={this.props.application}/>
         </div>
       );

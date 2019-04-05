@@ -16,23 +16,23 @@ class DashboardOverlay extends Component {
         };
 
         return (
-            <div class="dashboard-overlay-container">
-                <div class="dashboard-overlay-top">
-                    <div class="dashboard-overlay-team">
-                        <div class="dashboard-overlay-team-left">
+            <div className="dashboard-overlay-container">
+                <div className="dashboard-overlay-top">
+                    <div className="dashboard-overlay-team">
+                        <div className="dashboard-overlay-team-left">
                             <img src={emblemImage} alt="emblem" />
                         </div>
-                        <div class="dashboard-overlay-team-right">
-                            <div class="dashboard-overlay-team-name">
+                        <div className="dashboard-overlay-team-right">
+                            <div className="dashboard-overlay-team-name">
                                 AWESOME TEAM
                             </div>
-                            <div class="dashboard-overlay-team-progress-bar">
-                                <div style={progressBarStyle} class="dashboard-overlay-team-progress-bar-fill">
-                                    <div class="dashboard-overlay-team-progress-bar-fill-top"></div>
-                                    <div class="dashboard-overlay-team-progress-bar-fill-bottom"></div>
+                            <div className="dashboard-overlay-team-progress-bar">
+                                <div style={progressBarStyle} className="dashboard-overlay-team-progress-bar-fill">
+                                    <div className="dashboard-overlay-team-progress-bar-fill-top"></div>
+                                    <div className="dashboard-overlay-team-progress-bar-fill-bottom"></div>
                                 </div>
                             </div>
-                            <div class="dashboard-overlay-team-progress-text">
+                            <div className="dashboard-overlay-team-progress-text">
                                 {typeof this.props.completedIssues === 'number' ? this.props.completedIssues : '?'} / {typeof this.props.totalIssues ? this.props.totalIssues : '?'} COMPLETED
                             </div>
                         </div>

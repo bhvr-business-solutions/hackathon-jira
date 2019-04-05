@@ -8,7 +8,7 @@ import DashboardOverlay from './DashboardOverlay';
 class Dashboard extends Component {   
     render() {
         return (
-            <div class="dashboard-container">
+            <div className="dashboard-container">
                 <Avatar users={this.props.application.topUsers}/>
                 <Forest />
                 <DashboardOverlay 
