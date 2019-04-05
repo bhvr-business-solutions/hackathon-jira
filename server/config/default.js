@@ -29,6 +29,16 @@ module.exports = {
       name: "tyson",
       avatar: "barbarian_1_walk.gif",
       jiraId: "5a81b4f4cd68e7211cf87aaf"
+    },
+    {
+      name: "hodor",
+      avatar: "wizard_1_walk.gif",
+      jiraId: "557058:d2ccf86c-db2e-453d-8ad0-d9ef6facd83f"
+    },
+    {
+      name: "Groot",
+      avatar: "goblin_2_walk.gif",
+      jiraId: "557058:5795d3dc-e7f4-4045-a717-fec981187530"
     }
   ]
 };

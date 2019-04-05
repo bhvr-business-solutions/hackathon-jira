@@ -5,7 +5,6 @@
 
 .avatar-list{
     position: absolute;
-    z-index: 100;
     top: 58%;
     display: flex;
 }
@@ -17,7 +16,8 @@
 }
 
 .avatarImage{
-    width: 300px
+    width: 300px;
+    z-index: 10;
 }
 
 .avatarName{
@@ -25,4 +25,5 @@
     color: white;
     font-size: 19px;
     margin-top: -60px;
+    z-index: 100;
 }
