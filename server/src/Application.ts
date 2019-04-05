@@ -121,7 +121,7 @@ export class Application {
   private computeScores(): Ranking {
     //formula to calculate score
     const calcScore = (issue: Issue): number => {
-      return 10000 / issue.priority;
+      return Math.floor(10000 / issue.priority);
     };
   
     const issues = this.store.getAll();
@@ -143,10 +143,10 @@ export class Application {
             id: i.user.id,
             name: configInfo ? configInfo.name : this.config.defaultUser.name,
             avatar: configInfo ? configInfo.avatar : this.config.defaultUser.avatar,
-            score: i.status === IssueStatus.Done ?  score : 0
+            score: i.status === IssueStatus.Done ? score : 0
           })
         }
-        else {
+        else if (i.status === IssueStatus.Done) {
           user.score += score;
         }
       }
