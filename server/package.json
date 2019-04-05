@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf node_modules build",
-    "dev": "nodemon --watch src -e ts --exec ts-node src/index.ts",
+    "dev": "nodemon --watch src --watch config -e ts -e js --exec ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p tsconfig.json"
   },
