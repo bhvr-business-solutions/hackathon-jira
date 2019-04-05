@@ -1,18 +1,38 @@
 import * as bodyParser from 'body-parser';
 import * as config from 'config';
 import * as express from 'express';
-import * as path from 'path';
 import { Server } from 'http';
-import { Ranking } from './dtos/Ranking';
+import * as path from 'path';
 import { Issue, IssueStatus } from './entities/Issue';
+import { Ranking } from './entities/Ranking';
 import { WebSocket } from './helpers/WebSocket';
 import { JiraClient } from './jira/api/JiraClient';
 import { EventProcessor, EventType } from './jira/events/EventProcessor';
-import { IssueStore } from './store/IssueStore';
+import { MemoryStore } from './store/MemoryStore';
+
+interface AppConfig {
+  server: {
+    port: number;
+  };
+  jira: {
+    defaultProjectKey: string;
+  };
+  displayLimit: number;
+  teamName: string;
+  defaultUser: {
+    name: string;
+    avatar: string;
+  };
+  users: {
+      name: string;
+      avatar: string;
+      jiraId: string;
+  }[];
+}
 
 export class Application {
-  private port: number;
-  private store: IssueStore;
+  private config: AppConfig;
+  private store: MemoryStore<Issue>;
   private eventProcessor: EventProcessor;
   private app: express.Application;
   private server: Server;
@@ -20,8 +40,8 @@ export class Application {
   private jira: JiraClient;
 
   constructor() {
-    this.port = config.get<number>('server.port');
-    this.store = new IssueStore();
+    this.loadConfig();
+    this.store = new MemoryStore<Issue>();
     this.initEventProcessor();
     this.initExpressApp();
     this.server = new Server(this.app);
@@ -29,8 +49,26 @@ export class Application {
     this.jira = new JiraClient(config.get<any>('jira'));
   }
 
+  private loadConfig(): void {
+    this.config = {
+      server: {
+        port: config.get<number>('server.port')
+      },
+      jira: {
+        defaultProjectKey: config.get<string>('jira.defaultProjectKey')
+      },
+      displayLimit: config.get<number>('displayLimit'),
+      teamName: config.get<string>('teamName'),
+      defaultUser: {
+        name: config.get<string>('defaultUser.name'),
+        avatar: config.get<string>('defaultUser.avatar'),
+      },
+      users: config.get<any>('users')
+    };
+  }
+
   private initEventProcessor(): void {
-    this.eventProcessor = new EventProcessor(config.get<string>('jira.defaultProjectKey'));
+    this.eventProcessor = new EventProcessor(this.config.jira.defaultProjectKey);
 
     this.eventProcessor.on(EventType.IssueUpdated, (issue) => {
       this.store.save(issue);
@@ -97,18 +135,18 @@ export class Application {
       completedIssues: 0,
       completedScores: 0,
       topUsers: [],
-      teamName: config.get<string>('teamName')
+      teamName: this.config.teamName
     };
-    for(const i of issues) {
+    for (const i of issues) {
       const score = calcScore(i);
       if (i.user) {
         const user = result.topUsers.find(x => x.id === i.user.id);
         if (!user) {
-          const configInfo = config.get<any>('users').find(x => x.jiraId === i.user.id);
+          const configInfo = this.config.users.find(x => x.jiraId === i.user.id);
           result.topUsers.push({
             id: i.user.id,
-            name: configInfo ? configInfo.name : config.get<any>('defaultUser').name,
-            avatar: configInfo ? configInfo.avatar : config.get<any>('defaultUser').avatar,
+            name: configInfo ? configInfo.name : this.config.defaultUser.name,
+            avatar: configInfo ? configInfo.avatar : this.config.defaultUser.avatar,
             score: i.status === IssueStatus.Done ?  score : 0
           })
         }
@@ -125,7 +163,7 @@ export class Application {
     }
 
     //return only the top users
-    result.topUsers = result.topUsers.sort((a, b) => b.score - a.score).splice(0, config.get<number>('displayLimit'));
+    result.topUsers = result.topUsers.sort((a, b) => b.score - a.score).splice(0, this.config.displayLimit);
 
     return result;
   }
@@ -139,8 +177,8 @@ export class Application {
           this.store.save(i);
         }
 
-        this.server.listen(this.port, () => {
-          console.log(`Server listening on port ${this.port}`);
+        this.server.listen(this.config.server.port, () => {
+          console.log(`Server listening on port ${this.config.server.port}`);
           resolve();
         });
       } catch (e) {
