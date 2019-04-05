@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './DashboardOverlay.css';
-
 import emblemImage from './assets/images/emblem.png';
+import './DashboardOverlay.css';
 
 class DashboardOverlay extends Component {
     render() {

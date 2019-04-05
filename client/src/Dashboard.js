@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './Dashboard.css';
-
-import Forest from './themes/forest/Forest';
 import Avatar from './avatar/Avatar';
+import './Dashboard.css';
 import DashboardOverlay from './DashboardOverlay';
+import Forest from './themes/forest/Forest';
 
 class Dashboard extends Component {   
     render() {

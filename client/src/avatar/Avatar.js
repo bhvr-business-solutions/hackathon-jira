@@ -14,7 +14,6 @@ class Avatar extends Component {
     }
 
     render() {
-        console.log(this.props.users[0].avatar)
         return (
             <div className="avatar-list">
                 {this.getUsers()}

@@ -1,8 +1,7 @@
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { getData } from './actions/Application';
 import './App.css';
-
 import Dashboard from './Dashboard';
 
 class AppComponent extends Component {
@@ -26,14 +25,12 @@ class AppComponent extends Component {
     if (!this.state.ready) {
       return <div>Loading app...</div>;
     }
-    else{
-      
-      return (
-        <div className="app-container">
-          <Dashboard application={this.props.application}/>
-        </div>
-      );
-    }
+
+    return (
+      <div className="app-container">
+      <Dashboard application={this.props.application}/>
+      </div>
+    );
   }
 }
 
