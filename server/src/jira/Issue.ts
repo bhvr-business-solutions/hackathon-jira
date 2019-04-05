@@ -100,9 +100,9 @@ export class Issue {
 
   private getIssueStatus(data: 'Backlog' | 'In Progress' | 'Done'): AppIssueStatus {
     switch (data) {
-      case 'Backlog': return AppIssueStatus.Pending;
+      case 'Done': return AppIssueStatus.Done
       case 'In Progress': return AppIssueStatus.InProgress;
-      default: return AppIssueStatus.Done;
+      default: return AppIssueStatus.Pending;
     }
   }
 
