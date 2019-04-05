@@ -7,7 +7,8 @@ export class WebSocket {
 
   constructor(app: Server) {
     this.server = io({
-      serveClient: true
+      serveClient: true,
+      path: '/ws'
     });
     this.server.attach(app);
   }

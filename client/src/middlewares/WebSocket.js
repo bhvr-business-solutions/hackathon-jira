@@ -5,10 +5,12 @@ class WebSocket {
   static socket;
   
   static getSocket() {
-    if (!this.socket) {
+    if (!this.socket && io) {
       // Create socket
       /* global io */
-      this.socket = io('http://localhost:8081');
+      this.socket = io({
+        path: '/api/ws'
+      });
       
       // Automatically reconnect on disconnection
       this.socket.on('disconnect', (reason) => {

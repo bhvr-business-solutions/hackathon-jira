@@ -17,7 +17,7 @@ module.exports = {
   users: [
     {
       name: "wondert",
-      avatar: "wizard_1_walk.gif",
+      avatar: "princess_walk.gif",
       jiraId: "5c350d9005d0812fde06dd22"
     },
     {
