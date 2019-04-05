@@ -4,10 +4,10 @@ import './DashboardOverlay.css';
 
 class DashboardOverlay extends Component {
     render() {
+        const { totalIssues, completedIssues } = this.props;
         let width = '0%';
-
-        if (this.props.totalIssues && this.props.totalIssues !== 0) {
-            width = `${this.props.completedIssues / this.props.totalIssues * 100}%`;
+        if (typeof totalIssues === 'number' && totalIssues > 0) {
+            width = `${completedIssues / totalIssues * 100}%`;
         }
 
         const progressBarStyle = {
@@ -23,7 +23,7 @@ class DashboardOverlay extends Component {
                         </div>
                         <div className="dashboard-overlay-team-right">
                             <div className="dashboard-overlay-team-name">
-                                AWESOME TEAM
+                                {this.props.teamName.toUpperCase()}
                             </div>
                             <div className="dashboard-overlay-team-progress-bar">
                                 <div style={progressBarStyle} className="dashboard-overlay-team-progress-bar-fill">
@@ -32,7 +32,7 @@ class DashboardOverlay extends Component {
                                 </div>
                             </div>
                             <div className="dashboard-overlay-team-progress-text">
-                                {typeof this.props.completedIssues === 'number' ? this.props.completedIssues : '?'} / {typeof this.props.totalIssues ? this.props.totalIssues : '?'} COMPLETED
+                                {typeof completedIssues === 'number' ? completedIssues : '?'} / {typeof totalIssues ? totalIssues : '?'} COMPLETED
                             </div>
                         </div>
                     </div>
