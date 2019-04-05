@@ -1,0 +1,32 @@
+{
+  "name": "hackathon-jira",
+  "version": "1.0.0",
+  "description": "## Client",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "clean:client": "npm --prefix client run clean",
+    "install:client": "npm i --prefix client --",
+    "dev:client": "npm --prefix client run start",
+    "clean:server": "npm --prefix server run clean",
+    "install:server": "npm i --prefix server --",
+    "dev:server": "npm --prefix server run dev",
+    "clean": "npm run clean:server && npm run clean:client",
+    "install": "npm run install:server && npm run install:client",
+    "dev": "concurrently --no-color --names server,client --kill-others \"npm run dev:server\" \"npm run dev:client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhvr-business-solutions/hackathon-jira.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhvr-business-solutions/hackathon-jira/issues"
+  },
+  "homepage": "https://github.com/bhvr-business-solutions/hackathon-jira#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}

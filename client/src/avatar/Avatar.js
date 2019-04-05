@@ -8,7 +8,6 @@ class Avatar extends Component {
             return <div className="avatar-wrapper" key={x.id}>
                 <img className="avatarImage" src={`http://localhost:8081/avatar/${x.avatar}`} alt="gif" />            
                 <span className="avatarName">{x.name}<br />{x.score} </span>
-                doot
             </div>;
         })
 

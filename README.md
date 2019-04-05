@@ -1,34 +1,18 @@
 # Setup
 
-## Client
-
+From the top level directory
 ```bash
-cd client
-npm install
-```
-
-## Server
-
-```bash
-cd server
 npm install
 ```
 
 # Start
 
-## Server (should be strated first)
-
+From the top level directory
 ```bash
-cd server
 npm run dev
 ```
 
-## Client
-
-```bash
-cd client
-npm start
-```
+Once started, the application is available at [http://localhost:3000/](http://localhost:3000/)
 
 # Activate Jira webhooks
 
@@ -45,6 +29,7 @@ ngrok http 8081
 ## Add Jira webhook
 
 Go to https://behaviour.atlassian.net/plugins/servlet/webhooks  
+
 Create a webhook:
 
 * For url, use ngrok public url (see ngrok output)

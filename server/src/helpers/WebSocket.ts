@@ -18,9 +18,9 @@ export class WebSocket {
 
   public handleNewConnection(socket: io.Socket): void {
     socket.join(this.eventsRoom);
-    console.log('Client connected');
-    socket.on('disconnect', () => {
-      console.log('Client disconnected');
-    })
+    // console.log('Client connected');
+    // socket.on('disconnect', () => {
+    //   console.log('Client disconnected');
+    // });
   }
 }

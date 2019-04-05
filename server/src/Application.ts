@@ -91,7 +91,6 @@ export class Application {
     };
   
     const issues = this.store.getAll();
-    console.log(issues);
     let result: Ranking = {
       totalIssues: 0,
       totalScores: 0,
